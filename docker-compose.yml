@@ -1,0 +1,13 @@
+version: "2.0"
+services:
+    lamp:
+        container_name: lampp-img
+        ports:
+            - '8080:80'
+        environment:
+            - LOG_STDOUT=true
+            - LOG_STDERR=true
+            - LOG_LEVEL=debug
+        volumes:
+            - '/root/project/website:/var/www/html'
+        image: fauria/lamp
