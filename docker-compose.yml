@@ -9,5 +9,5 @@ services:
             - LOG_STDERR=true
             - LOG_LEVEL=debug
         volumes:
-            - '/root/project/website:/var/www/html'
+            - '/root/project:/var/www/html'
         image: fauria/lamp
