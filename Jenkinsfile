@@ -1,7 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Install Prerequisite [docker dependencies and docker]') {
+        stage('Get devops repo from github') {
+            steps {
+                deleteDir()
+                sh 'git clone https://github.com/atulp-edureka/devops.git'
+            }
+        }
+        stage('Install Prerequisite [Docker dependencies and Docker]') {
             steps {
                 sh 'ansible-playbook /root/devops/prerequisite.yaml' 
             }
