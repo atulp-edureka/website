@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Install Prerequisite [Docker dependencies and Docker]') {
             steps {
-                sh 'ansible-playbook devops/prerequisite.yaml' 
+                sh 'ansible-playbook credentialsId: root, playbook: devops/prerequisite.yaml' 
             }
         }
         stage('Deploy Project On Test Server') {
             steps {
-                sh 'ansible-playbook devops/deploy.yaml' 
+                sh 'ansible-playbook credentialsId: root, playbook: devops/deploy.yaml' 
             }
         }
         stage('Test website') {
