@@ -19,13 +19,13 @@ pipeline {
         }
         stage('Test website') {
             steps {
-                echo 'Testing Done'
+                sh 'python devops/checksiteisup.py'
             }
         }
         stage('Cleanup Test Server') {
             steps {
-                //sh 'ansible-playbook /root/devops/deploy.yaml'
-                echo 'Cleaup all data from test server'
+                ansiblePlaybook credentialsId: 'root', installation: 'myansible', playbook: 'devops/cleanup.yaml'
+                //echo 'Cleaup all data from test server'
             }
         }
     }
