@@ -19,7 +19,8 @@ pipeline {
         }
         stage('Test website') {
             steps {
-                sh 'python devops/checksiteisup.py'
+                //sh 'python devops/checksiteisup.py'
+                ansiblePlaybook credentialsId: 'root', installation: 'myansible', playbook: 'devops/tests.yaml' 
             }
         }
         stage('Cleanup Test Server') {
